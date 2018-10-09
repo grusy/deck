@@ -187,6 +187,8 @@ export interface INLBTargetGroupDescription {
   attributes: {
     // Defaults to 300
     deregistrationDelay?: number;
+    // Defaults to false
+    proxyProtocolV2?: boolean;
   };
   // Defaults to 10
   healthCheckInterval?: number;

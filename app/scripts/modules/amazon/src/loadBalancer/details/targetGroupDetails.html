@@ -122,6 +122,8 @@
       <dl class="horizontal-when-filters-collapsed">
         <dt>Deregistration Delay Timeout</dt>
         <dd>{{ctrl.targetGroup.attributes['deregistration_delay.timeout_seconds']}} seconds</dd>
+        <dt>ProxyProtocolV2</dt>
+        <dd>{{ctrl.targetGroup.attributes['proxy_protocol_v2.enabled']}}</dd>
         <dt>Stickiness Enabled</dt>
         <dd>{{ctrl.targetGroup.attributes['stickiness.enabled']}}</dd>
         <dt ng-if-start="ctrl.targetGroup.attributes['stickiness.enabled'] === 'true'">Stickiness Load Balancer Cookie Duration</dt>

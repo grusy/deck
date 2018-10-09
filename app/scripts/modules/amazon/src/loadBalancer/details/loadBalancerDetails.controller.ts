@@ -172,20 +172,20 @@ export class AwsLoadBalancerDetailsController implements IController {
                 }
               }
             }
-
-            this.loadBalancer.elb.securityGroups.forEach((securityGroupId: string) => {
-              const match = this.securityGroupReader.getApplicationSecurityGroup(
-                this.app,
-                this.loadBalancerFromParams.accountId,
-                this.loadBalancerFromParams.region,
-                securityGroupId,
-              );
-              if (match) {
-                securityGroups.push(match);
-              }
-            });
-            this.securityGroups = sortBy(securityGroups, 'name');
-
+            if (sourceData.loadBalancerType === 'application' || sourceData.loadBalancerType === 'classic') {
+              this.loadBalancer.elb.securityGroups.forEach((securityGroupId: string) => {
+                const match = this.securityGroupReader.getApplicationSecurityGroup(
+                  this.app,
+                  this.loadBalancerFromParams.accountId,
+                  this.loadBalancerFromParams.region,
+                  securityGroupId,
+                );
+                if (match) {
+                  securityGroups.push(match);
+                }
+              });
+              this.securityGroups = sortBy(securityGroups, 'name');
+            }
             if (this.loadBalancer.subnets) {
               this.loadBalancer.subnetDetails = this.loadBalancer.subnets.reduce(
                 (subnetDetails: ISubnet[], subnetId: string) => {

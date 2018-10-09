@@ -452,6 +452,7 @@ export class AwsLoadBalancerTransformer {
             unhealthyThreshold: targetGroup.unhealthyThresholdCount,
             attributes: {
               deregistrationDelay: Number(targetGroup.attributes['deregistration_delay.timeout_seconds']),
+              proxyProtocolV2: Boolean(targetGroup.attributes['proxy_protocol_v2.enabled']),
             },
           };
         });
@@ -588,6 +589,7 @@ export class AwsLoadBalancerTransformer {
           unhealthyThreshold: 10,
           attributes: {
             deregistrationDelay: 600,
+            proxyProtocolV2: false,
           },
         },
       ],

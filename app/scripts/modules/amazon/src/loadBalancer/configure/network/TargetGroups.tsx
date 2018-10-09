@@ -161,6 +161,7 @@ class TargetGroupsImpl extends React.Component<ITargetGroupsProps, ITargetGroups
       unhealthyThreshold: 10,
       attributes: {
         deregistrationDelay: 600,
+        proxyProtocolV2: false,
       },
     });
     setFieldValue('targetGroups', values.targetGroups);
@@ -373,6 +374,23 @@ class TargetGroupsImpl extends React.Component<ITargetGroupsProps, ITargetGroups
                                 )
                               }
                             />
+                          </span>
+                          <span className="wizard-pod-content">
+                            <label className="checkbox-inline" style={{ paddingTop: '2px' }}>
+                              <input
+                                type="checkbox"
+                                checked={targetGroup.attributes.proxyProtocolV2}
+                                onChange={event =>
+                                  this.targetGroupFieldChanged(
+                                    index,
+                                    'attributes.proxyProtocolV2',
+                                    event.target.checked,
+                                  )
+                                }
+                              />{' '}
+                              <label>Proxy Protocol V2</label>
+                              <HelpField id="aws.targetGroup.attributes.proxyProtocolV2" />
+                            </label>
                           </span>
                         </div>
                       </div>
